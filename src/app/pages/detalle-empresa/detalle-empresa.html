@@ -1,0 +1,88 @@
+<div class="detalle-container">
+
+  <header class="detalle-header">
+    <div>
+      <h1>Detalle de empresa</h1>
+      <p>Información completa de la empresa registrada.</p>
+    </div>
+
+    <button class="btn-regresar" type="button" (click)="regresar()">
+      Volver al listado
+    </button>
+  </header>
+
+  @if (cargando) {
+    <div class="mensaje-cargando">
+      Cargando información de la empresa...
+    </div>
+  }
+
+  @if (mensajeError) {
+    <div class="mensaje-error" role="alert">
+      {{ mensajeError }}
+    </div>
+  }
+
+  @if (empresa; as e) {
+    <section class="detalle-card">
+
+      <div class="detalle-titulo">
+        <h2>{{ e.nombreComercial }}</h2>
+
+        <span
+          class="estado"
+          [class.estado-activo]="e.estado?.toLowerCase() === 'activo'"
+          [class.estado-inactivo]="e.estado?.toLowerCase() === 'inactivo'">
+          {{ e.estado }}
+        </span>
+      </div>
+
+      <div class="detalle-grid">
+
+        <div class="campo">
+          <span class="etiqueta">ID de empresa</span>
+          <p>{{ e.idEmpresa }}</p>
+        </div>
+
+        <div class="campo">
+          <span class="etiqueta">Nombre comercial</span>
+          <p>{{ e.nombreComercial }}</p>
+        </div>
+
+        <div class="campo">
+          <span class="etiqueta">Razón social</span>
+          <p>{{ e.razonSocial }}</p>
+        </div>
+
+        <div class="campo">
+          <span class="etiqueta">Teléfono</span>
+          <p>{{ e.telefono }}</p>
+        </div>
+
+        <div class="campo">
+          <span class="etiqueta">Correo electrónico</span>
+          <p>{{ e.correoElectronico }}</p>
+        </div>
+
+        <div class="campo">
+          <span class="etiqueta">NIT</span>
+          <p>{{ e.nit }}</p>
+        </div>
+
+        <div class="campo campo-direccion">
+          <span class="etiqueta">Dirección</span>
+          <p>{{ e.direccion }}</p>
+        </div>
+
+      </div>
+
+      <div class="detalle-acciones">
+        <button type="button" class="btn-regresar" (click)="regresar()">
+          Regresar
+        </button>
+      </div>
+
+    </section>
+  }
+
+</div>

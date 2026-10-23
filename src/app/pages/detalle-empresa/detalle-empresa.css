@@ -1,0 +1,176 @@
+:host {
+  display: block;
+  min-height: 100%;
+}
+
+.detalle-container {
+  padding: 24px;
+  color: #263238;
+}
+
+.detalle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 25px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(110deg, #7200c9, #00b8cf);
+}
+
+.detalle-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.detalle-header p {
+  margin: 0;
+}
+
+.btn-regresar {
+  border: none;
+  border-radius: 6px;
+  padding: 11px 18px;
+  color: white;
+  background: #7200c9;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-regresar:hover {
+  background: #57009b;
+}
+
+.detalle-header .btn-regresar {
+  color: #7200c9;
+  background: white;
+}
+
+.detalle-header .btn-regresar:hover {
+  background: #f1e5ff;
+}
+
+.detalle-card {
+  padding: 28px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 3px 14px rgb(0 0 0 / 8%);
+}
+
+.detalle-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.detalle-titulo h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.estado {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.estado-activo {
+  color: #087443;
+  background: #d7f5e4;
+}
+
+.estado-inactivo {
+  color: #a51d2d;
+  background: #ffe0e3;
+}
+
+.detalle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.campo {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f7f9fc;
+  overflow-wrap: anywhere;
+}
+
+.etiqueta {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.campo p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.campo-direccion {
+  grid-column: 1 / -1;
+}
+
+.detalle-acciones {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mensaje-cargando,
+.mensaje-error {
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+}
+
+.mensaje-cargando {
+  color: #075985;
+  background: #e0f2fe;
+}
+
+.mensaje-error {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+@media (max-width: 600px) {
+  .detalle-container {
+    padding: 12px;
+  }
+
+  .detalle-header,
+  .detalle-card {
+    padding: 18px;
+  }
+
+  .detalle-header h1 {
+    font-size: 23px;
+  }
+
+  .detalle-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .campo-direccion {
+    grid-column: auto;
+  }
+}

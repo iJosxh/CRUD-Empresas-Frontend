@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 32px;
+  background-color: #e8edef;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: linear-gradient(100deg, #7200c7, #00b9d6);
+  color: white;
+  border-radius: 8px;
+}
+
+.app-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.app-header p {
+  margin: 0;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #7200c7;
+  color: white;
+  cursor: pointer;
+}
+
+.app-content {
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 16px;
+  }
+
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
