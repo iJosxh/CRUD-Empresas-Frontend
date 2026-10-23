@@ -15,172 +15,254 @@
 
 <section class="empresas-container">
 
-    @if (mostrarFormulario) {
-  <section class="formulario-empresa">
+  <!-- Formulario para registrar una empresa -->
+  @if (mostrarFormulario) {
+    <section class="formulario-empresa">
 
-    <div class="formulario-header">
-      <h2>Nueva empresa</h2>
+      <div class="formulario-header">
+        <h2>Nueva empresa</h2>
 
-      <button
-        type="button"
-        (click)="cerrarFormulario()"
-      >
-        Cerrar
-      </button>
-    </div>
-
-    <form [formGroup]="formularioEmpresa" (ngSubmit)="guardarEmpresa()">
-      <div class="formulario-grid">
-
-  <div class="campo">
-    <label for="nombreComercial">Nombre comercial</label>
-    <input
-      id="nombreComercial"
-      formControlName="nombreComercial"
-      type="text"
-      placeholder="Ej. Comercial del Norte"
-    >
-    @if (
-        formularioEmpresa.get('nombreComercial')?.touched &&
-        formularioEmpresa.get('nombreComercial')?.invalid
-        ) {
-        <small class="error">
-            @if (formularioEmpresa.get('nombreComercial')?.hasError('required')) {
-            El nombre comercial es obligatorio.
-            }
-        </small>
-        }
-  </div>
-
-  <div class="campo">
-    <label for="razonSocial">Razón social</label>
-    <input
-      id="razonSocial"
-      formControlName="razonSocial"
-      type="text"
-      placeholder="Ej. Comercial del Norte, S. A."
-    >
-    @if (
-        formularioEmpresa.get('razonSocial')?.touched &&
-        formularioEmpresa.get('razonSocial')?.invalid
-        ) {
-        <small class="error">
-            @if (formularioEmpresa.get('razonSocial')?.hasError('required')) {
-            La razón social es obligatoria.
-            }
-        </small>
-        }
-  </div>
-
-  <div class="campo">
-    <label for="telefono">Teléfono</label>
-    <input
-      id="telefono"
-      formControlName="telefono"
-      type="tel"
-      placeholder="Ej. 55551234"
-    >
-    @if (
-        formularioEmpresa.get('telefono')?.touched &&
-        formularioEmpresa.get('telefono')?.invalid
-        ) {
-        <small class="error">
-            @if (formularioEmpresa.get('telefono')?.hasError('required')) {
-            El teléfono es obligatorio.
-            } @else if (formularioEmpresa.get('telefono')?.hasError('pattern')) {
-            El teléfono debe tener exactamente 8 dígitos.
-            }
-        </small>
-        }
-  </div>
-
-  <div class="campo">
-    <label for="correoElectronico">Correo electrónico</label>
-    <input
-      id="correoElectronico"
-      formControlName="correoElectronico"
-      type="email"
-      placeholder="Ej. contacto@empresa.com"
-    >
-    @if (
-        formularioEmpresa.get('correoElectronico')?.touched &&
-        formularioEmpresa.get('correoElectronico')?.invalid
-        ) {
-        <small class="error">
-            @if (formularioEmpresa.get('correoElectronico')?.hasError('required')) {
-            El correo electrónico es obligatorio.
-            } @else if (formularioEmpresa.get('correoElectronico')?.hasError('email')) {
-            El correo electrónico no es válido.
-            }
-        </small>
-        }
-  </div>
-
-  <div class="campo">
-    <label for="nit">NIT</label>
-    <input
-      id="nit"
-      formControlName="nit"
-      type="text"
-      placeholder="Ingresa el NIT"
-    >
-    @if (
-        formularioEmpresa.get('nit')?.touched &&
-        formularioEmpresa.get('nit')?.invalid
-        ) {
-        <small class="error">
-            @if (formularioEmpresa.get('nit')?.hasError('required')) {
-            El nit es obligatorio.
-            } @else if (formularioEmpresa.get('nit')?.hasError('pattern')) {
-            El nit debe tener exactamente 9 dígitos.
-            }
-        </small>
-        }
-  </div>
-
-  <div class="campo">
-    <label for="estado">Estado</label>
-    <select id="estado" formControlName="estado">
-      <option value="Activo">Activo</option>
-      <option value="Inactivo">Inactivo</option>
-    </select>
-  </div>
-
-  <div class="campo campo-completo">
-    <label for="direccion">Dirección</label>
-    <input
-      id="direccion"
-      formControlName="direccion"
-      type="text"
-      placeholder="Ingresa la dirección"
-    >
-  </div>
-
-</div>
-
-      <div class="formulario-acciones">
         <button
           type="button"
           (click)="cerrarFormulario()"
         >
-          Cancelar
-        </button>
-
-        <button type="submit">
-          Guardar empresa
+          Cerrar
         </button>
       </div>
-    </form>
 
-  </section>
-}
+      <form
+        [formGroup]="formularioEmpresa"
+        (ngSubmit)="guardarEmpresa()"
+      >
 
-    @if (mensajeExito) {
-    <div class="mensaje-exito">
-        {{ mensajeExito }}
+        <div class="formulario-grid">
+
+          <!-- Nombre comercial -->
+          <div class="campo">
+            <label for="nombreComercial">
+              Nombre comercial
+            </label>
+
+            <input
+              id="nombreComercial"
+              formControlName="nombreComercial"
+              type="text"
+              placeholder="Ej. Comercial del Norte"
+            >
+
+            @if (
+              formularioEmpresa.get('nombreComercial')?.touched &&
+              formularioEmpresa.get('nombreComercial')?.invalid
+            ) {
+              <small class="error">
+                @if (
+                  formularioEmpresa.get('nombreComercial')?.hasError('required')
+                ) {
+                  El nombre comercial es obligatorio.
+                }
+              </small>
+            }
+          </div>
+
+          <!-- Razón social -->
+          <div class="campo">
+            <label for="razonSocial">
+              Razón social
+            </label>
+
+            <input
+              id="razonSocial"
+              formControlName="razonSocial"
+              type="text"
+              placeholder="Ej. Comercial del Norte, S. A."
+            >
+
+            @if (
+              formularioEmpresa.get('razonSocial')?.touched &&
+              formularioEmpresa.get('razonSocial')?.invalid
+            ) {
+              <small class="error">
+                @if (
+                  formularioEmpresa.get('razonSocial')?.hasError('required')
+                ) {
+                  La razón social es obligatoria.
+                }
+              </small>
+            }
+          </div>
+
+          <!-- Teléfono -->
+          <div class="campo">
+            <label for="telefono">
+              Teléfono
+            </label>
+
+            <input
+              id="telefono"
+              formControlName="telefono"
+              type="tel"
+              placeholder="Ej. 55551234"
+            >
+
+            @if (
+              formularioEmpresa.get('telefono')?.touched &&
+              formularioEmpresa.get('telefono')?.invalid
+            ) {
+              <small class="error">
+                @if (
+                  formularioEmpresa.get('telefono')?.hasError('required')
+                ) {
+                  El teléfono es obligatorio.
+                } @else if (
+                  formularioEmpresa.get('telefono')?.hasError('pattern')
+                ) {
+                  El teléfono debe tener exactamente 8 dígitos.
+                }
+              </small>
+            }
+          </div>
+
+          <!-- Correo electrónico -->
+          <div class="campo">
+            <label for="correoElectronico">
+              Correo electrónico
+            </label>
+
+            <input
+              id="correoElectronico"
+              formControlName="correoElectronico"
+              type="email"
+              placeholder="Ej. contacto@empresa.com"
+            >
+
+            @if (
+              formularioEmpresa.get('correoElectronico')?.touched &&
+              formularioEmpresa.get('correoElectronico')?.invalid
+            ) {
+              <small class="error">
+                @if (
+                  formularioEmpresa.get('correoElectronico')?.hasError('required')
+                ) {
+                  El correo electrónico es obligatorio.
+                } @else if (
+                  formularioEmpresa.get('correoElectronico')?.hasError('email')
+                ) {
+                  El correo electrónico no es válido.
+                }
+              </small>
+            }
+          </div>
+
+          <!-- NIT -->
+          <div class="campo">
+            <label for="nit">
+              NIT
+            </label>
+
+            <input
+              id="nit"
+              formControlName="nit"
+              type="text"
+              placeholder="Ingresa el NIT"
+            >
+
+            @if (
+              formularioEmpresa.get('nit')?.touched &&
+              formularioEmpresa.get('nit')?.invalid
+            ) {
+              <small class="error">
+                @if (
+                  formularioEmpresa.get('nit')?.hasError('required')
+                ) {
+                  El NIT es obligatorio.
+                } @else if (
+                  formularioEmpresa.get('nit')?.hasError('pattern')
+                ) {
+                  El NIT debe tener exactamente 9 dígitos.
+                }
+              </small>
+            }
+          </div>
+
+          <!-- Estado -->
+          <div class="campo">
+            <label for="estado">
+              Estado
+            </label>
+
+            <select
+              id="estado"
+              formControlName="estado"
+            >
+              <option value="">Selecciona un estado</option>
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+
+            @if (
+              formularioEmpresa.get('estado')?.touched &&
+              formularioEmpresa.get('estado')?.hasError('required')
+            ) {
+              <small class="error">
+                Debes seleccionar un estado.
+              </small>
+            }
+          </div>
+
+          <!-- Dirección -->
+          <div class="campo campo-completo">
+            <label for="direccion">
+              Dirección
+            </label>
+
+            <input
+              id="direccion"
+              formControlName="direccion"
+              type="text"
+              placeholder="Ingresa la dirección"
+            >
+
+            @if (
+              formularioEmpresa.get('direccion')?.touched &&
+              formularioEmpresa.get('direccion')?.hasError('required')
+            ) {
+              <small class="error">
+                La dirección es obligatoria.
+              </small>
+            }
+          </div>
+
+        </div>
+
+        <!-- Botones del formulario -->
+        <div class="formulario-acciones">
+          <button
+            type="button"
+            (click)="cerrarFormulario()"
+          >
+            Cancelar
+          </button>
+
+          <button type="submit">
+            Guardar empresa
+          </button>
+        </div>
+
+      </form>
+    </section>
+  }
+
+  <!-- Mensaje de éxito -->
+  @if (mensajeExito) {
+    <div
+      class="mensaje-exito"
+      role="status"
+    >
+      {{ mensajeExito }}
     </div>
-    }
+  }
 
+  <!-- Encabezado de la tabla -->
   <div class="tabla-header">
     <div>
       <h2>Empresas registradas</h2>
@@ -188,6 +270,7 @@
     </div>
   </div>
 
+  <!-- Tabla de empresas -->
   <div class="tabla-contenedor">
     <table class="tabla-empresas">
 
@@ -205,40 +288,76 @@
 
       <tbody>
         @for (empresa of empresas; track empresa.idEmpresa) {
-            <tr>
-            <td>{{ empresa.nombreComercial || 'Sin nombre' }}</td>
-            <td>{{ empresa.razonSocial || 'Sin razón social' }}</td>
-            <td>{{ empresa.telefono || 'Sin teléfono' }}</td>
-            <td>{{ empresa.correoElectronico || 'Sin correo' }}</td>
-            <td>{{ empresa.nit || 'Sin NIT' }}</td>
+          <tr>
 
             <td>
-                <span
+              {{ empresa.nombreComercial || 'Sin nombre' }}
+            </td>
+
+            <td>
+              {{ empresa.razonSocial || 'Sin razón social' }}
+            </td>
+
+            <td>
+              {{ empresa.telefono || 'Sin teléfono' }}
+            </td>
+
+            <td>
+              {{ empresa.correoElectronico || 'Sin correo' }}
+            </td>
+
+            <td>
+              {{ empresa.nit || 'Sin NIT' }}
+            </td>
+
+            <td>
+              <span
                 class="estado"
                 [class.activo]="empresa.estado?.toLowerCase() === 'activo'"
-                [class.inactivo]="empresa.estado?.toLowerCase() !== 'activo'"
-                >
+                [class.inactivo]="empresa.estado?.toLowerCase() === 'inactivo'"
+              >
                 {{ empresa.estado || 'Sin estado' }}
-                </span>
+              </span>
             </td>
 
+            <!-- Acciones -->
             <td>
-                <button
-                    class="btn-detalle"
-                    type="button"
-                    [routerLink]="['/detalle-empresa', empresa.idEmpresa]">
-                    Ver
+              <button
+                type="button"
+                class="btn-detalle"
+                [routerLink]="[
+                  '/detalle-empresa',
+                  empresa.idEmpresa
+                ]"
+              >
+                Ver
+              </button>
+
+              <button
+                type="button"
+                class="btn-editar"
+                (click)="editarEmpresa(empresa)"
+                >
+                Editar
                 </button>
-                <button type="button" class="btn-editar">Editar</button>
-                <button type="button" class="btn-eliminar">Eliminar</button>
+
+              <button
+                type="button"
+                class="btn-eliminar"
+              >
+                Eliminar
+              </button>
             </td>
-            </tr>
+
+          </tr>
         } @empty {
-            <tr>
-            <td colspan="7">No hay empresas registradas.</td>
-            </tr>
+          <tr>
+            <td colspan="7">
+              No hay empresas registradas.
+            </td>
+          </tr>
         }
-        </tbody>
+      </tbody>
 
     </table>
   </div>

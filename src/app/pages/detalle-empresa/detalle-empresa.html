@@ -6,24 +6,23 @@
       <p>Información completa de la empresa registrada.</p>
     </div>
 
-    <button class="btn-regresar" type="button" (click)="regresar()">
+    <button
+      class="btn-regresar"
+      type="button"
+      (click)="regresar()">
       Volver al listado
     </button>
   </header>
 
   @if (cargando) {
-    <div class="mensaje-cargando">
+    <div class="mensaje-cargando" role="status">
       Cargando información de la empresa...
     </div>
-  }
-
-  @if (mensajeError) {
+  } @else if (mensajeError) {
     <div class="mensaje-error" role="alert">
       {{ mensajeError }}
     </div>
-  }
-
-  @if (empresa; as e) {
+  } @else if (empresa; as e) {
     <section class="detalle-card">
 
       <div class="detalle-titulo">
@@ -77,7 +76,10 @@
       </div>
 
       <div class="detalle-acciones">
-        <button type="button" class="btn-regresar" (click)="regresar()">
+        <button
+          type="button"
+          class="btn-regresar"
+          (click)="regresar()">
           Regresar
         </button>
       </div>

@@ -22,5 +22,15 @@ export class EmpresaService {
 
   obtenerEmpresa(id: number): Observable<Empresa> {
     return this.http.get<Empresa>(`${this.apiUrl}/${id}`);
-}
+    }
+
+   actualizarEmpresa(
+    id: number,
+    empresa: NuevaEmpresa
+    ): Observable<Empresa> {
+    return this.http.put<Empresa>(
+        `${this.apiUrl}/${id}`,
+        empresa
+    );
+    } 
 }
