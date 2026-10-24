@@ -1,59 +1,94 @@
-# CrudFrontend
+# CRUD de Empresas — Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.4.
+Aplicación web desarrollada con Angular para gestionar empresas. Permite registrar empresas, consultar sus datos y actualizar su información mediante una API REST desarrollada con Spring Boot.
 
-## Development server
+## Tecnologías utilizadas
 
-To start a local development server, run:
+- Angular
+- TypeScript
+- HTML y CSS
+- Reactive Forms
+- HttpClient
+- Angular Router
+
+## Requisitos previos
+
+Antes de instalar el proyecto, asegúrate de tener instalados:
+
+- **Node.js:** entorno de ejecución de JavaScript.
+- **npm:** administrador de paquetes que se instala con Node.js.
+- **Angular CLI:** herramienta para ejecutar y administrar proyectos Angular.
+- **Backend Spring Boot:** API REST del sistema de empresas.
+
+## Instalación
+
+1. Clona el repositorio o descarga el proyecto.
+2. Abre una terminal en la carpeta raíz del frontend.
+3. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+4. Si no tienes Angular CLI instalado, puedes instalarlo con:
+
+   ```bash
+   npm install -g @angular/cli
+   ```
+
+## Configuración
+
+
+Verifica que el backend esté ejecutándose y que la URL configurada en el servicio `src/app/services/empresa.ts` corresponda a la dirección de tu API.
+
+Configuración actual:
+
+```typescript
+private apiUrl = 'http://localhost:8080/api/empresas';
+```
+
+Si el backend utiliza otro puerto o dirección, actualiza esta URL.
+
+## Ejecutar el proyecto
+
+Desde la carpeta raíz del frontend, ejecuta:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+También puedes utilizar:
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Abre el navegador en:
 
-```bash
-ng generate --help
+http://localhost:4200
+
+
+## Funcionalidades
+
+- Listar empresas registradas.
+- Registrar nuevas empresas.
+- Validar los campos del formulario.
+- Consultar los detalles de una empresa.
+- Actualizar la información de una empresa.
+
+## Estructura principal
+
+```text
+src/
+└── app/
+    ├── models/
+    │   └── empresa.ts
+    ├── services/
+    │   └── empresa.ts
+    ├── pages/
+    │   ├── listado-empresas/
+    │   └── detalle-empresa/
+    ├── app.config.ts
+    ├── app.routes.ts
+    └── app.html
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
